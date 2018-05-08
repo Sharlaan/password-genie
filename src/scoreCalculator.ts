@@ -1,4 +1,9 @@
-import { SYMBOLS, AMBIGUOUS } from './pwdGenerator';
+import {
+  countLetters,
+  countNumbers,
+  countRepeatedChar,
+  countSymbols,
+} from '@/helpers';
 // Based on Jeff Todnem's password-meter http://www.passwordmeter.com/
 // original code: http://www.passwordmeter.com/js/pwdmeter.js
 
@@ -21,7 +26,7 @@ import { SYMBOLS, AMBIGUOUS } from './pwdGenerator';
  * - Symbols
  */
 
-export default (password: string): number => {
+export default function scoreCalculator(password: string) {
   let score = 0;
   const len = password.length;
 
@@ -80,45 +85,4 @@ export default (password: string): number => {
 
   // console.log('score', score);
   return score < 0 ? 0 : score > 100 ? 100 : score;
-};
-
-const SYMBOLS_EXTENDED = SYMBOLS + AMBIGUOUS;
-const regexpSYMBOLS = SYMBOLS_EXTENDED.split('').join('\\');
-
-function countLetters(str: string) {
-  return (str.match(/[a-zA-Z]/g) || []).length;
-}
-
-function countUppercaseLetters(str: string) {
-  return (str.match(/[A-Z]/g) || []).length;
-}
-
-function countNumbers(str: string) {
-  return (str.match(/\d/g) || []).length;
-}
-
-function countSymbols(str: string) {
-  const pattern = new RegExp('[' + regexpSYMBOLS + ']', 'g');
-  return (str.match(pattern) || []).length;
-}
-
-// count consecutives
-
-// case of any consecutive of same type (ex: 83 or aZ or :;)
-function countConsecutiveSameType(str: string) {
-  return str;
-}
-
-// case of following repetitions of same char (ex: 22 or ff or %%)
-function countRepeatedChar(str: string) {
-const pattern = new RegExp('([\w\d' + regexpSYMBOLS + '])\\1*', 'g');
-return (str.match(pattern) || []).reduce((count, repetition) => count + (repetition.length - 1), 0);
-}
-
-// case of sequential (forward and reverse) (ex: 34 or kJ)
-function countSequentialForward(str: string) {
-  return str;
-}
-function countSequentialReverse(str: string) {
-  return str;
 }

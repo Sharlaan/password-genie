@@ -28,13 +28,7 @@ import MoreOptions from './components/MoreOptions.vue';
 import pwdGenerator from './pwdGenerator';
 import scoreGenerator from './scoreCalculator';
 import scoreCalculator from './scoreCalculator';
-
-export interface Settings {
-  length: number;
-  digits: number;
-  symbols: number;
-  ambiguous: boolean;
-}
+import { Settings } from '@/types';
 
 @Component({
   components: {
@@ -48,10 +42,10 @@ export interface Settings {
 export default class App extends Vue {
   private customBackground: object = { backgroundColor: '#b0c4de' };
   private newPassword: string = 'Click "REGENERATE"';
-  private score: number;
+  private score: number = 0;
   private settings: Settings = {
-    length: 12,
-    digits: 4,
+    length: 8,
+    digits: 3,
     symbols: 2,
     ambiguous: true,
   };

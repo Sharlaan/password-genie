@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import VueClipboards from 'vue-clipboards';
-import App from './App.vue';
+import App from '@/App.vue';
 import './registerServiceWorker';
 
 Vue.config.productionTip = false;

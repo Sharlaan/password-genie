@@ -8,7 +8,7 @@
           containing the chosen number of digits and symbols, filling the remaining slots with letters.<br>
           Notes:<br>
           - letters will be randomly upper-cased;<br>
-          - digits + symbols <= length;<br>
+          - digits + symbols will always be lower or equal to length;<br>
           - if you set digits + symbols = length, password will not contain any letter.
         </span>
       </v-tooltip>
@@ -45,8 +45,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit, Watch, Model } from 'vue-property-decorator';
-import { SYMBOLS } from '../pwdGenerator';
-import { Settings } from '../App.vue';
+import { SYMBOLS } from '@/helpers';
+import { Settings } from '@/types';
 
 @Component
 export default class Options extends Vue {

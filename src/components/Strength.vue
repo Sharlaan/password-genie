@@ -12,16 +12,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-
-enum Status {
-  VERY_WEAK = 'Very Weak',
-  WEAK = 'Weak',
-  AVERAGE = 'Average',
-  STRONG = 'Strong',
-  SECURE = 'Secure',
-}
-
-interface ColoredStatus { label: Status; color: string; }
+import { Status, ColoredStatus } from '@/types';
 
 const COLORS: ColoredStatus[] = [
   { label: Status.VERY_WEAK, color: 'error' }, // 0 - 19;
@@ -36,7 +27,7 @@ export default class Strength extends Vue {
   @Prop({ default: 0, required: true })
   private score: number;
 
-  get status(): { label: Status, color: string } {
+  get status() {
     return this.score >= 100 ? COLORS[4] : COLORS[Math.floor(this.score / 20)];
   }
 }

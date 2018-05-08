@@ -16,8 +16,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit, Watch, Model } from 'vue-property-decorator';
-import { AMBIGUOUS } from '../pwdGenerator';
-import { Settings } from '../App.vue';
+import { AMBIGUOUS } from '@/helpers';
+import { Settings } from '@/types';
 
 @Component
 export default class MoreOptions extends Vue {
