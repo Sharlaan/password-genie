@@ -1,4 +1,3 @@
-import { Settings } from '@/types';
 import { shuffle, pickDigits, pickLetters, pickSymbols } from '@/helpers';
 
 /**

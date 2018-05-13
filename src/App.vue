@@ -37,6 +37,16 @@ export const defaultSettings = {
   ambiguous: true,
 };
 
+const radialGradientBG = {
+  backgroundImage: `-webkit-radial-gradient(100% 100%,ellipse farthest-side,#dbf6c8 20%,#1cafc6 50%,#012690 110%),
+  radial-gradient(ellipse farthest-side at 100% 100%,#dbf6c8 20%,#1cafc6 50%,#012690 110%)`,
+};
+
+const randomBG = (url) => ({
+  background: `url(${url}) no-repeat center fixed`,
+  backgroundSize: 'cover',
+});
+
 @Component({
   components: {
     Result,
@@ -59,10 +69,7 @@ export default class App extends Vue {
       .size(1980, 1080)
       .frequency('daily')
       .fetch();
-    this.customBackground = {
-      background: `url(${url}) no-repeat center fixed`,
-      backgroundSize: 'cover',
-    };
+    this.customBackground = radialGradientBG; // randomBG(url);
   }
 
   @Watch('settings', { deep: true })
