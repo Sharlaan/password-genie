@@ -3,6 +3,9 @@ import {
   countNumbers,
   countRepeatedChar,
   countSymbols,
+  countConsecutiveSameType,
+  countSequentialForward,
+  countSequentialReverse,
 } from '@/helpers';
 // Based on Jeff Todnem's password-meter http://www.passwordmeter.com/
 // original code: http://www.passwordmeter.com/js/pwdmeter.js
@@ -40,14 +43,13 @@ export default function scoreCalculator(password: string) {
   // Letters Only -n
   score -= letters === len ? len : 0;
 
-  // Consecutive Uppercase Letters	-(n*2)
+  // Consecutive Lowercase/Uppercase/Numbers/Symbols chars	-(n*2)
+  const consecutives = countConsecutiveSameType(password);
+  score -= consecutives * 2;
 
-
-  // Consecutive; Lowercase; Letters	-(n*2);
-
-
-  // Sequential Letters (3+)	-(n*3);
-
+  // Sequential Letters or numbers (3+)	-(n*3);
+  const sequential = countSequentialForward(password) + countSequentialReverse(password);
+  score -= sequential * 3;
 
   // Numbers  +(n*4)
   const numbers = countNumbers(password);
@@ -56,19 +58,9 @@ export default function scoreCalculator(password: string) {
   // Numbers Only  -n
   score -= numbers === len ? len : 0;
 
-  // Consecutive Numbers  -(n*2);
-
-
-  // Sequential Numbers (3+)  -(n*3);
-
-
   // Symbols	+(n*6)
   const symbols = countSymbols(password);
   score += symbols * 6;
-
-
-  // Sequential Symbols (3+)  -(n * 3);
-
 
   // Middle Numbers or Symbols	+(n*2)
 
@@ -84,5 +76,13 @@ export default function scoreCalculator(password: string) {
   score -= repeats * 3;
 
   // console.log('score', score);
+  // console.table({
+  //   length: len,
+  //   letters,
+  //   numbers,
+  //   symbols,
+  //   consecutives,
+  //   sequential,
+  // });
   return score < 0 ? 0 : score > 100 ? 100 : score;
 }

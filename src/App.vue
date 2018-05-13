@@ -30,6 +30,13 @@ import scoreGenerator from './scoreCalculator';
 import scoreCalculator from './scoreCalculator';
 import { Settings } from '@/types';
 
+export const defaultSettings = {
+  length: 8,
+  digits: 4,
+  symbols: 2,
+  ambiguous: true,
+};
+
 @Component({
   components: {
     Result,
@@ -42,13 +49,8 @@ import { Settings } from '@/types';
 export default class App extends Vue {
   private customBackground: object = { backgroundColor: '#b0c4de' };
   private newPassword: string = 'Click "REGENERATE"';
-  private score: number = 0;
-  private settings: Settings = {
-    length: 8,
-    digits: 3,
-    symbols: 2,
-    ambiguous: true,
-  };
+  private score: number | null = null;
+  private settings: Settings = defaultSettings;
 
   public async mounted() {
     const unsplash = new UnsplashSourceEs6();

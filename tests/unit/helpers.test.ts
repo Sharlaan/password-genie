@@ -10,8 +10,8 @@ import {
 } from '@/helpers';
 
 describe('countConsecutiveSameType', () => {
-  it('should detect any consecutive chars of same type in 83aZf91:;', () => {
-    const pw = '83aZf91:;';
+  it('should detect any consecutive chars of same type in 83xuAP91:;', () => {
+    const pw = '83xuAP91:;';
     const count = countConsecutiveSameType(pw);
     expect(count).toBe(5);
   });

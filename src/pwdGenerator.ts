@@ -11,6 +11,9 @@ import { shuffle, pickDigits, pickLetters, pickSymbols } from '@/helpers';
  * @return {string}
  */
 export default function pwdGenerator({ length = 8, digits = 4, symbols = 2, ambiguous = true }): string {
+  if (length < digits + symbols) {
+    throw new Error('DIGITS + SYMBOLS should be lower than total LENGTH !');
+  }
   const letters = length - digits - symbols;
   return shuffle([
     ...pickDigits(digits),

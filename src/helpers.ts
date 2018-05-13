@@ -19,6 +19,8 @@ const getRandomIntBetween = (min: number, max: number) => floor(random() * (max 
 const range = (n: number): undefined[] => [...Array(n)];
 
 const isLetter = (char: string) => /[a-zA-Z]/.test(char);
+const isLowerCaseLetter = (char: string) => /[a-z]/.test(char);
+const isUpperCaseLetter = (char: string) => /[A-Z]/.test(char);
 const isNumber = (char: string) => /\d/.test(char);
 const isSymbol = (char: string) => SYMBOLS_EXTENDED.includes(char);
 
@@ -77,13 +79,15 @@ export function countSymbols(str: string) {
   return (str.match(pattern) || []).length;
 }
 
-// count consecutives
+// ***** count consecutives *****
 
-// case of any consecutive of same type (ex: 83 or aZ or :;)
+// case of any consecutive of same type (ex: 83 or xu or AP or :;) including overlapping chars
+// n is number of consecutiveness
 export function countConsecutiveSameType(str: string) {
   return str.split('').reduce((count, char, i) => {
     const condition = (
-      (isLetter(char) && isLetter(str[i - 1])) ||
+      (isLowerCaseLetter(char) && isLowerCaseLetter(str[i - 1])) ||
+      (isUpperCaseLetter(char) && isUpperCaseLetter(str[i - 1])) ||
       (isNumber(char) && isNumber(str[i - 1])) ||
       (isSymbol(char) && isSymbol(str[i - 1]))
     );
@@ -91,7 +95,7 @@ export function countConsecutiveSameType(str: string) {
   }, 0);
 }
 
-// case of repetitions of same char (ex: 22 or ff or %%)
+// case of repetitions of same char (ex: 22 or ff or MM or %%)
 export function countRepeatedChar(str: string) {
   const pattern = new RegExp('([' + ALL + '])\\1*', 'g');
   return (str.match(pattern) || []).reduce((count, repetition) => count + (repetition.length - 1), 0);

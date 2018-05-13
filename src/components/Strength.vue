@@ -3,10 +3,10 @@
     <v-layout justify-space-between>
       <h3 class="subheading">Strength</h3>
       <span :style="{ color: $vuetify.theme[status.color] || status.color }">
-        {{ status.label }} {{ score }} %
+        {{ status.label }} {{ computedScore }} %
       </span>
     </v-layout>
-    <v-progress-linear v-model="score" :color="status.color"></v-progress-linear>
+    <v-progress-linear v-model="computedScore" :color="status.color"></v-progress-linear>
   </section>
 </template>
 
@@ -24,10 +24,17 @@ const COLORS: ColoredStatus[] = [
 
 @Component
 export default class Strength extends Vue {
-  @Prop({ default: 0, required: true })
-  private score: number;
+  @Prop() private score: number | null;
+
+  get computedScore() {
+    return Number.isFinite(this.score) ? this.score : 0;
+  }
 
   get status() {
+    if (!Number.isFinite(this.score)) {
+      return { label: '', color: 'darkgrey' };
+    }
+
     return this.score >= 100 ? COLORS[4] : COLORS[Math.floor(this.score / 20)];
   }
 }
