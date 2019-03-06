@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "license": "MIT",
   "private": false,
+  "homepage": "git@github.com:Sharlaan/password-genie",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "unit": "vue-cli-service test:unit",
     "e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "e2e:open": "vue-cli-service e2e:open"
+    "e2e:open": "vue-cli-service e2e:open",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js --branch gh-pages"
   },
   "dependencies": {
     "register-service-worker": "^1.6.2",
@@ -34,6 +36,8 @@
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "ts-jest": "^24.0.0",
+    "typescript": "^3.3.3333",
+    "vue-gh-pages": "^1.19.0",
     "vue-template-compiler": "^2.6.8"
   },
   "babel": {
