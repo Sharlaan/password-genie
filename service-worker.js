@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.4d52b3be4ef218243c74a305576a81da.js"
+  "/precache-manifest.8d57513c7ac87f99ce1e2605560f8d37.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "password-genie"});
