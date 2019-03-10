@@ -1,4 +1,4 @@
-import { shuffle, pickDigits, pickLetters, pickSymbols } from '@/helpers';
+import { pickDigits, pickLetters, pickSymbols, shuffle } from '@/helpers';
 
 /**
  * Generate a word of length N, with duplicates

@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
+import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Commands extends Vue {
-  @Prop() private password: string;
+  @Prop() private password!: string;
 
   @Emit()
   private reload(): void {

@@ -1,17 +1,15 @@
 <template>
   <v-card color="white">
-    <v-card-text class="text-xs-center">
-      {{password}}
-    </v-card-text>
+    <v-card-text class="text-xs-center">{{password}}</v-card-text>
   </v-card>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Result extends Vue {
-  @Prop() private password: string;
+  @Prop() private password!: string;
 }
 </script>
 
@@ -21,4 +19,3 @@ export default class Result extends Vue {
   word-break: break-all;
 }
 </style>
-

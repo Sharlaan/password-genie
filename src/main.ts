@@ -1,6 +1,7 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify';
 import VueClipboards from 'vue-clipboards';
+import Vuetify from 'vuetify';
+
 import App from '@/App.vue';
 import './registerServiceWorker';
 

@@ -5,7 +5,7 @@
   "private": false,
   "homepage": "git@github.com:Sharlaan/password-genie",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve --open --port 3000",
     "build": "vue-cli-service build",
     "unit": "vue-cli-service test:unit",
     "e2e": "vue-cli-service test:e2e",
@@ -23,19 +23,20 @@
     "vuetify": "^1.5.5"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.9",
-    "@vue/cli-plugin-babel": "^3.4.1",
-    "@vue/cli-plugin-e2e-cypress": "^3.4.1",
-    "@vue/cli-plugin-pwa": "^3.4.1",
-    "@vue/cli-plugin-typescript": "^3.4.1",
-    "@vue/cli-plugin-unit-jest": "^3.4.1",
-    "@vue/cli-service": "^3.4.1",
+    "@types/jest": "^24.0.11",
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-e2e-cypress": "^3.5.0",
+    "@vue/cli-plugin-pwa": "^3.5.0",
+    "@vue/cli-plugin-typescript": "^3.5.0",
+    "@vue/cli-plugin-unit-jest": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
     "@vue/test-utils": "^1.0.0-beta.29",
-    "babel-core": "^7.0.0-0",
+    "babel-core": "^7.0.0-bridge.0",
     "lint-staged": "^8.1.5",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "ts-jest": "^24.0.0",
+    "tslib": "^1.9.3",
     "typescript": "^3.3.3333",
     "vue-gh-pages": "^1.19.0",
     "vue-template-compiler": "^2.6.8"
@@ -55,30 +56,6 @@
     "last 2 versions",
     "not ie <= 10"
   ],
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      "^.+\\.vue$": "vue-jest",
-      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    },
-    "snapshotSerializers": [
-      "jest-serializer-vue"
-    ],
-    "testMatch": [
-      "<rootDir>/(tests/unit/**/*.(spec|test).(ts|tsx|js)|**/__tests__/*.(ts|tsx|js))"
-    ]
-  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },

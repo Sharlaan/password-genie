@@ -1,11 +1,11 @@
 import {
+  countConsecutiveSameType,
   countLetters,
   countNumbers,
   countRepeatedChar,
-  countSymbols,
-  countConsecutiveSameType,
   countSequentialForward,
   countSequentialReverse,
+  countSymbols,
 } from '@/helpers';
 // Based on Jeff Todnem's password-meter http://www.passwordmeter.com/
 // original code: http://www.passwordmeter.com/js/pwdmeter.js
@@ -63,7 +63,6 @@ export default function scoreCalculator(password: string) {
   score += symbols * 6;
 
   // Middle Numbers or Symbols	+(n*2)
-
 
   // Requirements  +(n*2)
   score += len >= 8 ? 2 : 0;

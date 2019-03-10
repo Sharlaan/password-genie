@@ -16,6 +16,9 @@
 
 Original project: https://nourabusoud.github.io/password-genie/
 
+Alternative boilerplate (separated templates in html files):  
+https://dev.to/georgehanson/building-vuejs-applications-with-typescript-1j2n
+
 ## Table of Contents
 
 - [Password Genie](#password-genie)

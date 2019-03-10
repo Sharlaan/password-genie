@@ -10,9 +10,10 @@
 //     expect(wrapper.text()).toMatch(msg);
 //   });
 // });
-import pwdGenerator from '@/pwdGenerator';
+// @ts-ignore
 import { defaultSettings } from '@/App.vue';
 import { countLetters, countNumbers, countSymbols } from '@/helpers';
+import pwdGenerator from '@/pwdGenerator';
 
 const { length, digits, symbols } = defaultSettings;
 

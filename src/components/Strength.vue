@@ -2,17 +2,17 @@
   <section class="mt-3">
     <v-layout justify-space-between>
       <h3 class="subheading">Strength</h3>
-      <span :style="{ color: $vuetify.theme[status.color] || status.color }">
-        {{ status.label }} {{ computedScore }} %
-      </span>
+      <span
+        :style="{ color: $vuetify.theme[status.color] || status.color }"
+      >{{ status.label }} {{ computedScore }} %</span>
     </v-layout>
     <v-progress-linear v-model="computedScore" :color="status.color"></v-progress-linear>
   </section>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Status, ColoredStatus } from '@/types';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { ColoredStatus, Status } from '../types';
 
 const COLORS: ColoredStatus[] = [
   { label: Status.VERY_WEAK, color: 'error' }, // 0 - 19;
@@ -24,8 +24,13 @@ const COLORS: ColoredStatus[] = [
 
 @Component
 export default class Strength extends Vue {
-  @Prop() private score: number | null;
+  @Prop() private score!: number;
 
+  /** Since v-linear-progress requires a bidirectional v-model prop,
+   * a setter must be explicitly written even if not used;
+   * else vue will complain at compile time to not mutate directly etc ...
+   */
+  set computedScore(s) {} // tslint:disable-line
   get computedScore() {
     return Number.isFinite(this.score) ? this.score : 0;
   }
